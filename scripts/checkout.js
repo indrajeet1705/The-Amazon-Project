@@ -34,7 +34,7 @@ cartSummaryHtml+=
                  ${matchingItem.name}
                 </div>
                 <div class="product-price">
-                ${formatCurrency(matchingItem.priceCents)}
+                $${formatCurrency(matchingItem.priceCents)}
                 </div>
                 <div class="product-quantity">
                   <span>
