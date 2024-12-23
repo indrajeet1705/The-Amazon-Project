@@ -53,4 +53,13 @@ export   function removeFromCart(productId){
      });
      cart=newCart;
      saveTOStorage();
+   
   }
+
+  export function totalCartQuantity(){
+    let totalQuantity=0;
+    cart.forEach(item=>{
+      totalQuantity+=item.Quantity;
+    });
+    return totalQuantity;
+  };
