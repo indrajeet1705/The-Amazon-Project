@@ -90,12 +90,12 @@
  
 
 
-const cart =Cart('cart-oop');
-const businesscart=Cart('cart-business');
- cart.loadFromStorage();
-businesscart.loadFromStorage();
-console.log(cart)
-console.log(businesscart)
+// const cart =Cart('cart-oop');
+// const businesscart=Cart('cart-business');
+//  cart.loadFromStorage();
+// businesscart.loadFromStorage();
+// console.log(cart)
+// console.log(businesscart)
 
  
  
