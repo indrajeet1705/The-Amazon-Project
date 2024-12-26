@@ -1,6 +1,9 @@
 import {cart,addToCart,totalCartQuantity} from "../data/cart.js";
-import { products } from "../data/products.js";
+import { products,loadProducts } from "../data/products.js";
 import { formatCurrency } from "./util/money.js";
+
+loadProducts(renderProductGrid);
+function renderProductGrid(){
 let productHTML='';
 products.forEach((product)=>{
 
@@ -40,7 +43,7 @@ products.forEach((product)=>{
               <option value="10">10</option>
             </select>
           </div>
-
+            ${product.extraInfoHTML()}
           <div class="product-spacer"></div>
 
           <div class="added-to-cart js-added-to-cart-${product.id}">
@@ -74,3 +77,4 @@ button.addEventListener('click',()=>{
    
 })
 });
+}

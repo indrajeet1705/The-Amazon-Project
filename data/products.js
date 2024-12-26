@@ -35,10 +35,49 @@ constructor(productDetails){
       getPrice(){
         return `$${formatCurrency(this.priceCents)}`
       }
+      extraInfoHTML(){
+        return '';
+      }
  }
 
+class Clothing extends Products{
+  sizeChartLink;
+  constructor(productDetails){
+    super(productDetails);
+         this.sizeChartLink=productDetails.sizeChartLink;
+  }
+  extraInfoHTML(){
+    return `<a href ="${this.sizeChartLink}" target ="_blank"> Size Chart </a>`;
+  }
+}
 
- 
+
+
+export let products=[];
+  export function loadProducts(fun){
+const xhr= new XMLHttpRequest();
+xhr.addEventListener('load',()=>{
+products=JSON.parse(xhr.response).map((productDetails)=>{
+  if(productDetails.type==='clothing'){
+   return new Clothing(productDetails);
+
+  }
+  else {
+   return new Products(productDetails);
+  }
+
+});
+console.log(products);
+fun();
+
+});
+xhr.open('GET','http://supersimplebackend.dev/products');
+xhr.send();
+}
+
+
+
+ /*
  export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -143,7 +182,10 @@ constructor(productDetails){
       "hoodies",
       "sweaters",
       "apparel"
-    ]
+    ],
+      type: "clothing",
+    sizeChartLink: "images/clothing-size-chart.png"
+    
   },
   {
     id: "77919bbe-0e56-475b-adde-4f24dfed3a04",
@@ -696,9 +738,19 @@ constructor(productDetails){
       "hoodies",
       "apparel",
       "mens"
-    ]
+    ],
+      type: "clothing",
+    sizeChartLink: "images/clothing-size-chart.png"
   }
 ].map((productDetails)=>{
-return new Products(productDetails);
+   if(productDetails.type==='clothing'){
+    return new Clothing(productDetails);
+
+   }
+   else {
+    return new Products(productDetails);
+   }
 
 });
+*/
+
