@@ -99,6 +99,9 @@ products=JSON.parse(xhr.response).map((productDetails)=>{
 fun();
 
 });
+xhr.addEventListener('error',(error)=>{
+  console.log('sorry');
+})
 xhr.open('GET','http://supersimplebackend.dev/products');
 xhr.send();
 }
