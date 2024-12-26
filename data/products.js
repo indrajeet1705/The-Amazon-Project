@@ -67,7 +67,7 @@ products=JSON.parse(xhr.response).map((productDetails)=>{
   }
 
 });
-console.log(products);
+
 fun();
 
 });
