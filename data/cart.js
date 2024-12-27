@@ -89,7 +89,7 @@ export   function removeFromCart(productId){
   console.log(xhr.response);
   fun();
   });
-  xhr.open('GET','http://supersimplebackend.dev/cart');
+  xhr.open('GET','https://supersimplebackend.dev/cart');
   xhr.send();
   }
   
