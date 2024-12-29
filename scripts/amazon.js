@@ -1,9 +1,9 @@
 import {cart,addToCart,totalCartQuantity} from "../data/cart.js";
-import { products,loadProducts } from "../data/products.js";
+import { products } from "../data/products.js";
 import { formatCurrency } from "./util/money.js";
 
-loadProducts(renderProductGrid);
-function renderProductGrid(){
+function loadProducts(){
+
 let productHTML='';
 products.forEach((product)=>{
 
@@ -77,4 +77,6 @@ button.addEventListener('click',()=>{
    
 })
 });
+
 }
+loadProducts();
