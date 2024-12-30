@@ -33,7 +33,7 @@ The Amazon Project is a web application that replicates core functionalities of 
 - **HTML**: Structure of the web pages.
 - **CSS**: Styling and layout of the web pages.
 - **JavaScript**: Interactive functionalities and dynamic content.
-- **[Bootstrap](https://getbootstrap.com/)**: For additional styling and responsive design.
+
 
 ## Live Demo
 
