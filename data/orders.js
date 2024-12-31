@@ -11,6 +11,11 @@ export const orders=JSON.parse(localStorage.getItem('orders')) || [];
 function saveTOStorage(){
   localStorage.setItem('orders',JSON.stringify(orders))
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadOrders();
+  loadOrderHeader();
+});
 let orderHtml='';
 function loadOrders(){
   let matchingItem;
@@ -54,19 +59,32 @@ let deliveryOption=getdeliveryOption(deliveryOptionId);
             </div>
 
             <div class="product-actions">
-              <a href="tracking.html">
-                <button class="track-package-button button-secondary">
+           
+                <button class="track-package-button button-secondary js-track-order" data-product-id="${productId}">
                   Track package
                 </button>
-              </a>
+            
             </div>
   `
 
+
+
 });
 document.querySelector('.js-order-details-grid').innerHTML=orderHtml;
+document.querySelectorAll('.js-track-order').forEach(but=>{
+ but.addEventListener('click',()=>{
+  let productId=but.dataset.productId;
+  localStorage.setItem('productId',productId)
+   
+   window.location.href='tracking.html';
+  
+ })
+})
+
+
 saveTOStorage();
 }
-loadOrders();
+
 export function loadOrderHeader(){
 
 let productPriceCents=0;
@@ -93,7 +111,8 @@ let productPriceCents=0;
   let totalQuantity=totalCartQuantity();
   
   document.querySelector('.js-order-quantity').innerHTML=totalQuantity;
+
 }
-loadOrderHeader();
+
 
 
