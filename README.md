@@ -105,6 +105,8 @@ The-Amazon-Project/
 - **Checkout Page**:
 ![image](https://github.com/user-attachments/assets/ff8429fb-ba0b-4651-956c-79fd883d60b3)
 
+- **Tracking Page**:
+![Screenshot 2024-12-31 110124](https://github.com/user-attachments/assets/60c56d57-1996-4818-93e8-3c82c060be92)
 
 
 
