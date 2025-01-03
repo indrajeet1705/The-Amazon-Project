@@ -1,4 +1,4 @@
-import { cart,removeFromCart,totalCartQuantity ,updateDeliveryOption} from "../../data/cart.js";
+import { cart,removeFromCart,totalCartQuantity ,updateDeliveryOption,updatetoCart} from "../../data/cart.js";
 import { products,getProduct} from "../../data/products.js";
 import { formatCurrency } from "../util/money.js"; 
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
@@ -48,7 +48,8 @@ cartSummaryHtml+=
                   <span>
                     Quantity: <span class="quantity-label">${cartItem.Quantity}</span>
                   </span>
-                  <span class="update-quantity-link link-primary">
+                  <span class="update-quantity-link link-primary js-update-quantity "
+                  data-product-id='${matchingItem.id}'>
                     Update
                   </span>
                   <span class="delete-quantity-link link-primary
@@ -70,6 +71,9 @@ cartSummaryHtml+=
           </div>
 `
 });
+
+
+
  
 function deliveryOptionsHTML(matchingItem,cartItem){
   let html='';
@@ -105,6 +109,10 @@ return html;
 }
 
 
+
+
+
+
 document.querySelector('.js-order-smmary').innerHTML=cartSummaryHtml;
 let totalQuantity=0;
 totalQuantity=totalCartQuantity();
@@ -124,6 +132,29 @@ document.querySelectorAll('.js-delete-link').forEach(link=> {
    renderPaymentSummary();  
   });
 });
+document.querySelectorAll('.js-update-quantity').forEach((link) => {
+  link.addEventListener('click', () => {
+    const productId = link.dataset.productId;
+    if (!link.innerHTML.includes('input')) {
+      link.innerHTML = `
+        <input type="text" style="width: 50px;" class="js-quantity-input">
+        <button class="js-update-quantity-button">Update</button>
+      `;
+    }
+    const button = link.querySelector('.js-update-quantity-button');
+    const input = link.querySelector('.js-quantity-input');
+
+    if (button) {
+      button.addEventListener('click', () => {
+        const quantityToUpdate = input.value;
+        updatetoCart(quantityToUpdate, productId);
+        renderOrderSummary();
+        renderPaymentSummary();
+      });
+    }
+  });
+});
+
 document.querySelectorAll('.js-delivery-option').forEach((element)=>{
   element.addEventListener('click',()=>{
       const{productId,deliveryOptionId}=element.dataset;

@@ -78,6 +78,18 @@ export   function removeFromCart(productId){
      saveTOStorage();
 
   }
+  export function updatetoCart(quantity,productId){
+  
+    cart.forEach((cartItem)=>{
+      if(cartItem.productId===productId){
+        console.log(quantity)
+         cartItem.Quantity=quantity;
+         console.log(cart)
+         saveTOStorage();
+
+      }
+    });
+  }
 
   
 
