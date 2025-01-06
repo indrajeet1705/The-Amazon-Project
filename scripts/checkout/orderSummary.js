@@ -146,7 +146,7 @@ document.querySelectorAll('.js-update-quantity').forEach((link) => {
 
     if (button) {
       button.addEventListener('click', () => {
-        const quantityToUpdate = input.value;
+        const quantityToUpdate = Number(input.value);
         updatetoCart(quantityToUpdate, productId);
         renderOrderSummary();
         renderPaymentSummary();
